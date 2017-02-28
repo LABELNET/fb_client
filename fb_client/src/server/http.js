@@ -1,13 +1,13 @@
 /**
  * Created by yuan on 2/27/2017.
  */
-import axios from 'axios'
+import http from 'axios'
 import user from './service/userService'
 
 // config http
-axios.defaults.baseURL = 'http://localhost:8000/fb'
-axios.defaults.timeout = 2500
-axios.defaults.headers.post['Content-Type'] = 'application/json'
+http.defaults.baseURL = 'http://localhost:8000/fb'
+http.defaults.timeout = 2500
+http.defaults.headers.post['Content-Type'] = 'application/json'
 
 // 通用返回值处理
 function FbResponse (promiss, callback) {
@@ -24,8 +24,9 @@ function FbResponse (promiss, callback) {
   })
 }
 
+// 加载用户列表
 function userList (callback) {
-  FbResponse(user.getUserList(axios), callback)
+  FbResponse(user.getUserList(http), callback)
 }
 
 export default {
