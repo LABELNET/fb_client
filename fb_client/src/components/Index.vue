@@ -14,7 +14,8 @@
       </div>
       <div class="content">
         <!-- 第2行 right-->
-        <fb_content></fb_content>
+        <!--<fb_content></fb_content>-->
+        <fb_adddoc></fb_adddoc>
       </div>
     </div>
     <div id="footer">
@@ -23,8 +24,8 @@
       </div>
       <div id="footer_right">
       </div>
-      </div>
     </div>
+  </div>
   </div>
 </template>
 
@@ -32,13 +33,15 @@
   import LeftMenu from './base/LeftMenu.vue'
   import TopMenu from './base/TopMenu.vue'
   import Content from './base/Content.vue'
+  import AddDoc from './doc/AddDoc.vue'
 
   export default {
     name: 'index',
     components: {
       'menu-left': LeftMenu,
       'menu-top': TopMenu,
-      'fb_content': Content
+      'fb_content': Content,
+      'fb_adddoc': AddDoc
     }
   }
 </script>

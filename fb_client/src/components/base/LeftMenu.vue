@@ -8,7 +8,9 @@
 
 
 
-          <el-menu-item index="2"><i class="el-icon-plus"></i>添加总结</el-menu-item>
+          <el-menu-item index="2"><i class="el-icon-plus"></i>
+           <router-link to="/doc/adddoc">添加总结</router-link>
+          </el-menu-item>
 
           <el-menu-item index="3"><i class="el-icon-document"></i>总结管理</el-menu-item>
 
