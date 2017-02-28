@@ -30,3 +30,10 @@ npm i element -S
  * import 使用单引号引入
  * 代码块，后缀不需要分号
 
+
+## axios
+ ```
+ # install axios : http
+ npm i axios -S
+
+```

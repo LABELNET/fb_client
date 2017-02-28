@@ -48,6 +48,7 @@
       }, 300),
       docSave: function () {
         console.log(this.input)
+        this.$http.get('/mdocs').then(response => console.log(response))
       }
     }
   }
@@ -94,7 +95,7 @@
     color: #333;
   }
 
-  textarea,#editor div {
+  textarea, #editor div {
     display: inline-block;
     width: 49%;
     height: 100%;
@@ -103,9 +104,8 @@
     padding: 0 20px;
   }
 
-
   textarea {
-    overflow-y:visible;
+    overflow-y: visible;
     border: none;
     border-right: 1px solid #ccc;
     resize: none;
