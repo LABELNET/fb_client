@@ -16,7 +16,7 @@
                      @select="handleSelect">
               <el-menu-item index="1">我的总结</el-menu-item>
 
-              <el-menu-item index="2">总结管理</el-menu-item>
+              <!--<el-menu-item index="2">总结管理</el-menu-item>-->
 
 
               <el-submenu index="3">
@@ -32,6 +32,7 @@
                 <el-menu-item index="4-1">个人中心</el-menu-item>
                 <el-menu-item index="4-2">注销账户</el-menu-item>
               </el-submenu>
+
             </el-menu>
 
           </div>
@@ -50,9 +51,6 @@
 </script>
 
 <style>
-
-  .grid-user {
-  }
 
   .menu {
     width: 100%;
@@ -75,4 +73,9 @@
     text-align: center;
     line-height: 60px;
   }
+
+  .menu .grid-content .grid-user {
+    float: right;
+  }
+
 </style>
