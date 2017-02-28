@@ -1,38 +1,78 @@
 <template>
-  <div>
+  <div class="menu_left">
     <!-- 第2行 -->
-    <el-row>
-      <el-col :span="4">
-        <div class="menu_left">
+    <el-row class="tac">
+      <el-col :span="24">
+        <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
 
-        </div>
-      </el-col>
-      <el-col :span="20">
-        <div class="content">
-          <p> 登陆后：默认显示 编辑总结页面 content <br><br> 未登陆：默认显示欢迎界面，并显示登陆</p>
-        </div>
+          <el-submenu index="1">
+
+            <template slot="title"><i class="el-icon-message"></i>总结存档</template>
+
+            <el-submenu index="1-1">
+              <template slot="title">2017</template>
+              <el-menu-item index="1-1-1" class="date_item">1月28日</el-menu-item>
+              <el-menu-item index="1-1-2" class="date_item">2月14日</el-menu-item>
+            </el-submenu>
+
+            <el-submenu index="1-2">
+              <template slot="title">2016</template>
+              <el-menu-item index="1-2-1" class="date_item">1月28日</el-menu-item>
+              <el-menu-item index="1-2-2" class="date_item">2月14日</el-menu-item>
+            </el-submenu>
+
+          </el-submenu>
+
+          <el-submenu index="2">
+            <template slot="title"><i class="el-icon-menu"></i>其他应用</template>
+
+            <el-menu-item-group title="待定">
+              <el-menu-item index="2-1">待定1</el-menu-item>
+              <el-menu-item index="2-2">待定2</el-menu-item>
+            </el-menu-item-group>
+
+          </el-submenu>
+
+          <el-menu-item index="3"><i class="el-icon-setting"></i>设置</el-menu-item>
+
+        </el-menu>
       </el-col>
     </el-row>
+
+    <div class="f_left">
+       <fb_footer></fb_footer>
+    </div>
+
   </div>
 </template>
 
 <script>
+  import Footer from './Footer.vue'
+
   export default {
-    name: 'leftMenu'
+    name: 'fbLeftMenu',
+    components: {
+      'fb_footer': Footer
+    }
   }
 </script>
 
 <style>
   .menu_left {
-    height: 1000px;
-    background-color: whitesmoke;
-    margin-top: 60px;
+    text-align: left;
   }
 
-  .content {
-    height: 1200px;
-    margin-top: 60px;
-    padding-left: 10px;
-    background-color: white;
+  .date_item {
+    height: 30px;
   }
+
+  .f_left {
+    width: 16.7%;
+    height: 40px;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+  }
+
+
 </style>

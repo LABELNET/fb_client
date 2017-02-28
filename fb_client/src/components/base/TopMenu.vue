@@ -2,7 +2,7 @@
   <div>
     <!-- 第1行 -->
     <div class="menu">
-      <el-row>
+      <el-row type="flex" align="top">
         <el-col :span="4">
           <div class="grid-content bg-black">
             <!--标题-->
@@ -45,7 +45,7 @@
 
 <script>
   export default {
-    name: 'topmenu'
+    name: 'fbTopmenu'
   }
 </script>
 
