@@ -1,10 +1,6 @@
 <template>
   <div class="fb_content">
-    <el-card class="box-card">
-      <div v-for="o in 4" class="text item">
-        {{'列表内容 ' + o }}
-      </div>
-    </el-card>
+    <router-view></router-view>
   </div>
 </template>
 

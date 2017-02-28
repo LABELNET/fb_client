@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <router-view></router-view>
-    <!--<fb-index></fb-index>-->
+    <!--<router-view name="index"></router-view>-->
+    <fb-index></fb-index>
   </div>
 </template>
 

@@ -13,9 +13,9 @@
         <menu-left class="left"></menu-left>
       </div>
       <div class="content">
-        <!-- 第2行 right-->
-        <!--<fb_content></fb_content>-->
-        <fb_adddoc></fb_adddoc>
+        <!-- 第2行 right ： content area-->
+        <fb_content></fb_content>
+        <!--<router-view></router-view>-->
       </div>
     </div>
     <div id="footer">

@@ -1,20 +1,35 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from '../components/Index'
+// index
+// import Index from '../components/Index'
+import FbIndex from '../components/fb/FbIndex'
+// doc
 import AddDoc from '../components/doc/AddDoc.vue'
+import DocManager from '../components/doc/DocManager.vue'
+// user
+import UserCenter from '../components/user/UserCenter.vue'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
       name: 'index',
-      component: Index
+      component: FbIndex
     }, {
       path: '/doc/adddoc',
-      name: 'adddoc',
+      name: 'doc_add',
       component: AddDoc
+    }, {
+      path: '/doc',
+      name: 'doc_manager',
+      component: DocManager
+    }, {
+      path: '/user/:id',
+      name: 'user',
+      component: UserCenter
     }
   ]
 })
