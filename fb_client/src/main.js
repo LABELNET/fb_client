@@ -7,15 +7,12 @@ import router from './router'
 // element-ui
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
-import axios from 'axios'
+import http from './server/http'
 
-// config http
-axios.defaults.baseURL = 'http://localhost:8000/fb'
-axios.defaults.timeout = 2500
-axios.defaults.headers.post['Content-Type'] = 'application/json'
-Vue.prototype.$http = axios
 // use ele ui
 Vue.use(ElementUI)
+// use http
+Vue.prototype.$http = http
 
 Vue.config.productionTip = false
 

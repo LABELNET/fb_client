@@ -48,7 +48,11 @@
       }, 300),
       docSave: function () {
         console.log(this.input)
-        this.$http.get('/mdocs').then(response => console.log(response))
+        this.$http.userList(([code, data]) => {
+          console.log('code:' + code)
+          console.log('data:')
+          console.log(data)
+        })
       }
     }
   }
