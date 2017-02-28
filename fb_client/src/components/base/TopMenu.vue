@@ -19,11 +19,10 @@
             <el-menu theme="dark"  class="grid-content el-menu-demo" mode="horizontal"
                      @select="handleSelect">
 
-              <el-menu-item index="1">我的总结</el-menu-item>
-
+              <el-menu-item index="2-0" :to="{name:'user',params:{id:12}}">我的总结</el-menu-item>
 
               <el-submenu index="2">
-                <template slot="title">切换员工</template>
+                <template slot="title">切换用户</template>
                 <el-menu-item index="2-1">User1</el-menu-item>
                 <el-menu-item index="2-2">User2</el-menu-item>
                 <el-menu-item index="2-3">User3</el-menu-item>
