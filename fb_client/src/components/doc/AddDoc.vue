@@ -21,7 +21,8 @@
           <el-option
             v-for="item in 27"
             :label="'第'+item+'周'"
-            :value="item">
+            :value="item"
+            :key="item">
           </el-option>
         </el-select>
 
@@ -29,7 +30,8 @@
           <el-option
             v-for="item of options"
             :label="item.label"
-            :value="item.value">
+            :value="item.value"
+            :key="item.id">
           </el-option>
         </el-select>
 

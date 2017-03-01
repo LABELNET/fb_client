@@ -6,6 +6,8 @@ import FbIndex from '../components/fb/FbIndex'
 // doc
 import AddDoc from '../components/doc/AddDoc.vue'
 import DocManager from '../components/doc/DocManager.vue'
+import DocDetail from '../components/doc/DocDetail.vue'
+
 // user
 import UserCenter from '../components/user/UserCenter.vue'
 
@@ -30,6 +32,10 @@ export default new Router({
       path: '/user/:id',
       name: 'user',
       component: UserCenter
+    }, {
+      path: '/doc/:id',
+      name: 'doc_detail',
+      component: DocDetail
     }
   ]
 })

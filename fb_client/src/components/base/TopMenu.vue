@@ -16,7 +16,7 @@
         <el-col :span="20">
           <div class="grid-content">
             <!--状态栏-->
-            <el-menu theme="dark"  class="grid-content el-menu-demo" mode="horizontal"
+            <el-menu theme="dark" class="grid-content el-menu-demo" mode="horizontal"
                      @select="handleSelect">
 
               <el-menu-item index="2-0" :to="{name:'user',params:{id:12}}">我的总结</el-menu-item>
@@ -50,7 +50,12 @@
 
 <script>
   export default {
-    name: 'fbTopmenu'
+    name: 'fbTopmenu',
+    methods: {
+      handleSelect: function (key, keyPath) {
+
+      }
+    }
   }
 </script>
 

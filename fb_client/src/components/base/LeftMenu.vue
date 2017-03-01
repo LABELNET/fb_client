@@ -3,7 +3,7 @@
     <!-- 第2行 -->
     <el-row class="tac">
       <el-col :span="24">
-        <el-menu  class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
+        <el-menu  class="el-menu-vertical-demo">
 
           <router-link :to="{name:'doc_add'}">
             <el-menu-item index="4"><i class="el-icon-plus"></i>
