@@ -1,7 +1,7 @@
 from rest_framework import generics
 from rest_framework import mixins
 
-from fourbox.models import Staff, Doc
+from fourbox.models import User, Doc
 from fourbox.serializer import FbStaffSerializer, FbDocSerializer
 
 
@@ -9,7 +9,7 @@ from fourbox.serializer import FbStaffSerializer, FbDocSerializer
 class FbStaffList(mixins.ListModelMixin,
                   mixins.CreateModelMixin,
                   generics.GenericAPIView):
-    queryset = Staff.objects.all()
+    queryset = User.objects.all()
     serializer_class = FbStaffSerializer
 
     def get(self, request, *args, **kwargs):
@@ -23,7 +23,7 @@ class FbStaffList(mixins.ListModelMixin,
 class FbStaffDetail(mixins.RetrieveModelMixin,
                     mixins.UpdateModelMixin,
                     generics.GenericAPIView):
-    queryset = Staff.objects.all()
+    queryset = User.objects.all()
     serializer_class = FbStaffSerializer
 
     def get(self, request, *args, **kwargs):
@@ -37,7 +37,7 @@ class FbStaffDetail(mixins.RetrieveModelMixin,
 class FbDocList(mixins.ListModelMixin,
                 mixins.CreateModelMixin,
                 generics.GenericAPIView):
-    queryset = Doc.objects.all()
+    queryset = Doc.objects.filter(status=1)
     serializer_class = FbDocSerializer
 
     def get(self, request, *args, **kwargs):
@@ -59,3 +59,8 @@ class FbDocDetail(mixins.RetrieveModelMixin,
 
     def post(self, request, *args, **kwargs):
         return self.update(request, args, kwargs)
+
+
+# doc draft list
+class FbDraftDocList(generics.ListAPIView):
+    serializer_class =  FbDocSerializer

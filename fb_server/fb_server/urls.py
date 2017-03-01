@@ -14,9 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from rest_framework.authtoken import views
 
 # from django.contrib import admin
 
 urlpatterns = [
     url(r'^fb/', include('fourbox.urls')),
+    # rest api doc
+    url(r'^docs/', include('rest_framework_docs.urls')),
+    url(r'^api-token-auth/', views.obtain_auth_token)
 ]
