@@ -1,5 +1,6 @@
 /**
  * Created by yuan on 2/28/2017.
+ * test
  * http user service
  * 处理返回值，默认导出
  */
@@ -20,7 +21,7 @@ function userCreate (data, callback) {
   FbResponse(user.createUser(data), callback)
 }
 
-export default {
+export {
   userList,
   userObj,
   userCreate

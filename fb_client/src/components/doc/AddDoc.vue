@@ -48,12 +48,12 @@
       }, 300),
       docSave: function () {
         console.log(this.input)
-        let data = {
-          'cn_name': '小怪',
-          'en_name': 'SmallGui'
-        }
-        this.$http.userCreate(data, this.response)
-//        this.$http.userList(this.response)
+//        let data = {
+//          'cn_name': '小怪',
+//          'en_name': 'SmallGui'
+//        }
+//        this.$http.user.userCreate(data, this.response)
+        this.$http.doc.getMakeDocsList(this.response)
 //        this.$http.userObj({id: 1}, this.response)
       },
       response: function ([code, data]) {

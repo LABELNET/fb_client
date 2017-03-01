@@ -5,14 +5,15 @@
 import http from '../common/FbHttp'
 
 // 创建草稿
-function createDraftDoc (data) {
+function createMakeDoc (data) {
   return http.post('/mdocs/', data)
 }
 
-function getDraftDocList() {
-  return
+function getMakeDocList () {
+  return http.get('/mdocs/')
 }
 
 export {
-  createDraftDoc
+  createMakeDoc,
+  getMakeDocList
 }
