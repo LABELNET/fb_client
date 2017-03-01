@@ -16,7 +16,12 @@ function userObj ({id = 0}, callback) {
   FbResponse(user.getUserById(id), callback)
 }
 
+function userCreate (data, callback) {
+  FbResponse(user.createUser(data), callback)
+}
+
 export default {
   userList,
-  userObj
+  userObj,
+  userCreate
 }

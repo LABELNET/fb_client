@@ -48,8 +48,13 @@
       }, 300),
       docSave: function () {
         console.log(this.input)
-        this.$http.userList(this.response)
-        this.$http.userObj({id: 1}, this.response)
+        let data = {
+          'cn_name': '小怪',
+          'en_name': 'SmallGui'
+        }
+        this.$http.userCreate(data, this.response)
+//        this.$http.userList(this.response)
+//        this.$http.userObj({id: 1}, this.response)
       },
       response: function ([code, data]) {
         console.log('code:' + code)

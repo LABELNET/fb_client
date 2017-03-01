@@ -14,7 +14,12 @@ function getUserById (id) {
   return http.get(`/users/${id}`)
 }
 
+function createUser (data) {
+  return http.post(`/users/`, data)
+}
+
 export {
   getUserById,
-  getUserList
+  getUserList,
+  createUser
 }
