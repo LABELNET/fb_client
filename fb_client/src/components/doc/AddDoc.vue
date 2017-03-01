@@ -10,14 +10,34 @@
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
           <el-breadcrumb-item>添加总结</el-breadcrumb-item>
         </el-breadcrumb>
+
+
       </div>
 
+
       <div class="tool_right">
-        <el-button class="tool_right_save" @click="docSave" type="primary">保存</el-button>
+
+        <el-select class="right_select" v-model="docObj.week_num" placeholder="请选择weekNum">
+          <el-option
+            v-for="item in 27"
+            :label="'第'+item+'周'"
+            :value="item">
+          </el-option>
+        </el-select>
+
+        <el-select class="right_select" v-model="docObj.user_name" placeholder="请选择Who">
+          <el-option
+            v-for="item of options"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
+
+        <el-button class="tool_right_save" @click="docSave" type="primary">提交</el-button>
       </div>
     </div>
     <div id="editor">
-      <textarea :value="input" @input="update"></textarea>
+      <textarea :value="docObj.content" @input="update"></textarea>
       <div v-html="compiledMarkdown"></div>
     </div>
   </div>
@@ -26,6 +46,7 @@
 <script>
   import marked from 'marked'
   import _ from 'lodash'
+  import DV from '../common/defaultValue'
 
   export default {
     name: 'addDoc',
@@ -34,32 +55,40 @@
     },
     data: function () {
       return {
-        input: '# input'
+        docObj: {
+          'content': DV.MAKEDOC_VALUE,
+          'status': 0,
+          'week_num': 1,
+          'user_name': 'who are you'
+        },
+        options: DV.DEFAULT_USER
       }
     },
     computed: {
       compiledMarkdown: function () {
-        return marked(this.input, {sanitize: true})
+        return marked(this.docObj.content, {sanitize: true})
       }
     },
     methods: {
       update: _.debounce(function (e) {
-        this.input = e.target.value
+        this.docObj.content = e.target.value
       }, 300),
       docSave: function () {
-        console.log(this.input)
-//        let data = {
-//          'cn_name': '小怪',
-//          'en_name': 'SmallGui'
-//        }
-//        this.$http.user.userCreate(data, this.response)
-        this.$http.doc.getMakeDocsList(this.response)
-//        this.$http.userObj({id: 1}, this.response)
+        this.$http.doc.createMakeDoc(this.docObj, this.response)
       },
       response: function ([code, data]) {
-        console.log('code:' + code)
-        console.log('data:')
-        console.log(data)
+        if (code === 201) {
+          // 创建成功
+          this.showMsg(['success', 'FourBox 提交成功 !'])
+        } else {
+          this.showMsg(['error', `出错了! status : ${code}`])
+        }
+      },
+      showMsg: function ([type, msg]) {
+        this.$message({
+          message: msg,
+          type: type
+        })
       }
     }
   }
@@ -89,6 +118,10 @@
     margin-right: 20px;
     text-align: center;
     margin-top: 10px;
+  }
+
+  #ad_tool .tool_right .right_select {
+    width: 150px;
   }
 
   #ad_tool {

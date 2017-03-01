@@ -8,9 +8,9 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import http from './server/http'
-
 // use ele ui
 Vue.use(ElementUI)
+
 // use http
 Vue.prototype.$http = http
 

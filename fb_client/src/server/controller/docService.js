@@ -14,7 +14,17 @@ function getMakeDocsList (callback) {
   FbResponse(doc.getMakeDocList(), callback)
 }
 
+function getMakeDocObj ({id = 0}, callback) {
+  FbResponse(doc.getMakeDocById(id), callback)
+}
+
+function updMakeDocObj ({data = null}, callback) {
+  FbResponse(doc.updateMakeDoc(data.id, data), callback)
+}
+
 export {
   createMakeDoc,
-  getMakeDocsList
+  getMakeDocsList,
+  getMakeDocObj,
+  updMakeDocObj
 }

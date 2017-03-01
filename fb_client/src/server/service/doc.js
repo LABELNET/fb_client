@@ -4,16 +4,29 @@
  */
 import http from '../common/FbHttp'
 
-// 创建草稿
+// 创建 doc
 function createMakeDoc (data) {
   return http.post('/mdocs/', data)
 }
 
+// 获取 doc list
 function getMakeDocList () {
   return http.get('/mdocs/')
 }
 
+// 获取 doc obj
+function getMakeDocById (id) {
+  return http.get(`/mdocs/${id}`)
+}
+
+// 更新 doc obj
+function updateMakeDoc (id, data) {
+  return http.post(`/mdocs/${id}`, data)
+}
+
 export {
   createMakeDoc,
-  getMakeDocList
+  getMakeDocList,
+  getMakeDocById,
+  updateMakeDoc
 }
