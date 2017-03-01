@@ -1,16 +1,9 @@
 from rest_framework import serializers
 
-from fourbox.models import Staff, Doc
-
-
-# staff
-class FbStaffSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Staff
-        fields = '__all__'
+from fourbox.models import MakeDoc
 
 
 class FbDocSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Doc
+        model = MakeDoc
         fields = '__all__'
