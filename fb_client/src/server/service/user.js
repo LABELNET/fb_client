@@ -1,16 +1,16 @@
 /**
  * Created by yuan on 3/1/2017.
- * user api
+ * user service
  * 使用  ·· 引号 ，非 ''
  */
+import http from '../common/FbHttp'
 
 // user list and created
-
-function getUserList (http) {
+function getUserList () {
   return http.get(`/users/`)
 }
 
-function getUserById (http, id) {
+function getUserById (id) {
   return http.get(`/users/${id}`)
 }
 

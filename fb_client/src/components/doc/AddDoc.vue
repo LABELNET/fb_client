@@ -48,11 +48,13 @@
       }, 300),
       docSave: function () {
         console.log(this.input)
-        this.$http.userList(([code, data]) => {
-          console.log('code:' + code)
-          console.log('data:')
-          console.log(data)
-        })
+        this.$http.userList(this.response)
+        this.$http.userObj({id: 1}, this.response)
+      },
+      response: function ([code, data]) {
+        console.log('code:' + code)
+        console.log('data:')
+        console.log(data)
       }
     }
   }

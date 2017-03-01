@@ -3,4 +3,6 @@
  * http 总入口/出口
  * (1) export default service
  */
-export {default} from './service/userService'
+
+// user
+export {default} from './controller/userService'

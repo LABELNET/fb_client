@@ -3,17 +3,17 @@
  * http user service
  * 处理返回值，默认导出
  */
-import {http, FbResponse} from '../common/FbHttp'
-import * as user from '../api/user'
+import FbResponse from '../common/FbResponse'
+import * as user from '../service/user'
 
 // 加载用户列表
 function userList (callback) {
-  FbResponse(user.getUserList(http), callback)
+  FbResponse(user.getUserList(), callback)
 }
 
 // 获取用户对象
 function userObj ({id = 0}, callback) {
-  FbResponse(user.getUserById(http, id), callback)
+  FbResponse(user.getUserById(id), callback)
 }
 
 export default {
