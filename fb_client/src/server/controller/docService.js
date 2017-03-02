@@ -25,9 +25,14 @@ function updMakeDocObj ({data = null}, callback) {
   FbResponse(doc.updateMakeDoc(data.id, data), callback)
 }
 
+function filterMakeDoc ({page = 1, week = 0, name = 'not', year = 0}, callback) {
+  FbResponse(doc.filterMakeDoc([page, week, name, year]), callback)
+}
+
 export {
   createMakeDoc,
   getMakeDocsList,
   getMakeDocObj,
-  updMakeDocObj
+  updMakeDocObj,
+  filterMakeDoc
 }

@@ -127,7 +127,7 @@
         this.doLoadData()
       },
       doLoadData: function () {
-        this.$http.doc.getMakeDocsList({page: this.currentPage, pagesize: 12}, this.dataResponse)
+        this.$http.doc.filterMakeDoc({page: this.currentPage}, this.dataResponse)
       }
     },
     created: function () {

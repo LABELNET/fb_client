@@ -24,9 +24,25 @@ function updateMakeDoc (id, data) {
   return http.post(`/mdocs/${id}`, data)
 }
 
+// filter doc : week,name,year
+function filterMakeDoc ([page, week, name, year]) {
+  let url = `/mdocs/filter/?page=${page}`
+  if (week !== 0) {
+    url += `&week=${week}`
+  }
+  if (name !== 'not') {
+    url += `&name=${name}`
+  }
+  if (year !== 0) {
+    url += `&year=${year}`
+  }
+  return http.get(url)
+}
+
 export {
   createMakeDoc,
   getMakeDocList,
   getMakeDocById,
-  updateMakeDoc
+  updateMakeDoc,
+  filterMakeDoc
 }
