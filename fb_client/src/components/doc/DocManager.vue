@@ -23,12 +23,12 @@
               :key="item">
             </el-option>
           </el-select>
-          <el-select class="right_select" @change="userChange" v-model="params.name" placeholder="选择用户">
+          <el-select class="right_select" @change="userChange" v-model="params.userId" placeholder="选择用户">
             <el-option
-              v-for="item of options"
-              :label="item.label"
-              :value="item.value"
-              :key="item.id">
+              v-for="user in users"
+              :label="user.username"
+              :value="user.id"
+              :key="user.id">
             </el-option>
           </el-select>
         </div>
@@ -59,7 +59,7 @@
               :formatter="weekFormatter">
             </el-table-column>
             <el-table-column
-              property="user_name"
+              property="user.username"
               label="姓名"
               width="200">
             </el-table-column>
@@ -99,7 +99,6 @@
 </template>
 
 <script>
-  import DV from '../common/defaultValue'
 
   export default {
     name: 'DocManager',
@@ -107,11 +106,11 @@
       return {
         tableData: [],
         total: 0,
-        options: DV.DEFAULT_USER_FILTER,
+        users: [],
         params: {
           page: this.currentPage,
           week: null,
-          name: null,
+          userId: null,
           year: null
         }
       }
@@ -132,7 +131,6 @@
       },
       dataResponse: function ([code, data]) {
         if (code === 200) {
-          console.log(data.results)
           this.tableData = data.results
           this.total = data.count
           if (this.tableData.length === 0) {
@@ -148,6 +146,13 @@
           type: type
         })
       },
+      userResponse: function ([code, data]) {
+        if (code === 200) {
+          this.users = data
+        } else {
+          this.showMsg(['error', `请求失败！ status : ${code}`])
+        }
+      },
       handleClickLook: function (row) {
         this.$router.push({name: 'doc_detail', params: {id: row.id}})
       },
@@ -160,6 +165,7 @@
       },
       doLoadData: function () {
         this.$http.doc.filterMakeDoc(this.params, this.dataResponse)
+        this.$http.user.userList(this.userResponse)
       },
       weekChange: function (val) {
         this.doLoadData()

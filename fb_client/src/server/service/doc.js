@@ -25,13 +25,13 @@ function updateMakeDoc (id, data) {
 }
 
 // filter doc : week,name,year
-function filterMakeDoc ([page, week, name, year]) {
+function filterMakeDoc ([page, week, userId, year]) {
   let url = `/mdocs/filter/?page=${page}`
   if (week !== null) {
     url += `&week=${week}`
   }
-  if (name !== null) {
-    url += `&name=${name}`
+  if (userId !== null) {
+    url += `&userId=${userId}`
   }
   if (year !== null) {
     url += `&year=${year}`

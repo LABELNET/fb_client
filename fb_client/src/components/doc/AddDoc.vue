@@ -26,14 +26,14 @@
           </el-option>
         </el-select>
 
-        <el-select class="right_select" v-model="docObj.user_name" placeholder="请选择Who">
-          <el-option
-            v-for="item of options"
-            :label="item.label"
-            :value="item.value"
-            :key="item.id">
-          </el-option>
-        </el-select>
+        <!--<el-select class="right_select" v-model="docObj.user_name" placeholder="请选择Who">-->
+          <!--<el-option-->
+            <!--v-for="item of options"-->
+            <!--:label="item.label"-->
+            <!--:value="item.value"-->
+            <!--:key="item.id">-->
+          <!--</el-option>-->
+        <!--</el-select>-->
 
         <el-button class="tool_right_save" @click="docSave" type="primary">提交</el-button>
       </div>
@@ -60,7 +60,6 @@
         docObj: {
           'content': ''
         },
-        options: DV.DEFAULT_USER,
         type: 0
       }
     },
@@ -72,8 +71,7 @@
         this.docObj = {
           'content': DV.MAKEDOC_VALUE,
           'status': 0,
-          'week_num': 1,
-          'user_name': 'who are you'
+          'week_num': 1
         }
       } else {
         // edit
@@ -95,10 +93,6 @@
         this.docObj.content = e.target.value
       }, 300),
       docSave: function () {
-        if (this.docObj.user_name === 'who are you') {
-          this.showMsg(['warning', 'who are you'])
-          return
-        }
         if (this.type === 0) {
           this.$http.doc.createMakeDoc(this.docObj, this.response)
         } else {
@@ -140,8 +134,7 @@
           this.docObj = {
             'content': DV.MAKEDOC_VALUE,
             'status': 0,
-            'week_num': 1,
-            'user_name': 'who are you'
+            'week_num': 1
           }
         }
       },

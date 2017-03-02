@@ -8,7 +8,7 @@ import http from '../common/FbHttp'
 
 // user list and created
 function getUserList () {
-  return http.get(`/users/`)
+  return http.get(`/mdocs/users/`)
 }
 
 function getUserById (id) {

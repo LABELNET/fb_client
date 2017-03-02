@@ -6,7 +6,7 @@
 import http from 'axios'
 
 // config http
-http.defaults.baseURL = 'http://localhost:8000/fb'
+http.defaults.baseURL = 'http://localhost:8000/fourbox'
 http.defaults.timeout = 2500
 http.defaults.headers.post['Content-Type'] = 'application/json'
 // cache-control: "max-age=0, private, must-revalidate"

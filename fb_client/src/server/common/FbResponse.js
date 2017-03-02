@@ -6,6 +6,7 @@
 export default function FbResponse (promiss, callback) {
   console.log('----------------- http already response : [code,data] => {} --------------------')
   promiss.then(response => {
+    console.log('response => ' + response.data)
     return callback([response.status, response.data])
   }).catch(error => {
     if (error.response) {
