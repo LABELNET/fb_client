@@ -9,5 +9,7 @@ import http from 'axios'
 http.defaults.baseURL = 'http://localhost:8000/fb'
 http.defaults.timeout = 2500
 http.defaults.headers.post['Content-Type'] = 'application/json'
+// cache-control: "max-age=0, private, must-revalidate"
+http.defaults.headers.post['Cache-control'] = 'max-age=5'
 
 export default http
