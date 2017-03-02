@@ -21,19 +21,19 @@ function getMakeDocById (id) {
 
 // 更新 doc obj
 function updateMakeDoc (id, data) {
-  return http.post(`/mdocs/${id}`, data)
+  return http.put(`/mdocs/${id}`, data)
 }
 
 // filter doc : week,name,year
 function filterMakeDoc ([page, week, name, year]) {
   let url = `/mdocs/filter/?page=${page}`
-  if (week !== 0) {
+  if (week !== null) {
     url += `&week=${week}`
   }
-  if (name !== 'not') {
+  if (name !== null) {
     url += `&name=${name}`
   }
-  if (year !== 0) {
+  if (year !== null) {
     url += `&year=${year}`
   }
   return http.get(url)

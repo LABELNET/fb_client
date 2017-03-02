@@ -14,7 +14,24 @@
         </div>
       </el-col>
       <el-col :span="16">
-        <div class="grid-content "></div>
+        <div class="grid-content ">
+          <el-select class="right_select" @change="weekChange" v-model="params.week" placeholder="选择周数">
+            <el-option
+              v-for="item in 28"
+              :label="(item-1)===0?'All week':'第'+(item-1)+'周'"
+              :value="(item-1)===0?null:item-1"
+              :key="item">
+            </el-option>
+          </el-select>
+          <el-select class="right_select" @change="userChange" v-model="params.name" placeholder="选择用户">
+            <el-option
+              v-for="item of options"
+              :label="item.label"
+              :value="item.value"
+              :key="item.id">
+            </el-option>
+          </el-select>
+        </div>
       </el-col>
       <el-col :span="4">
         <div class="grid-content ">
@@ -70,7 +87,7 @@
         <div class="block_page">
           <el-pagination
             @current-change="handleCurrentChange"
-            :current-page="currentPage"
+            :current-page="params.page"
             :page-size="10"
             layout="prev, pager, next"
             :total="total">
@@ -82,14 +99,25 @@
 </template>
 
 <script>
+  import DV from '../common/defaultValue'
+
   export default {
     name: 'DocManager',
     data: function () {
       return {
         tableData: [],
         total: 0,
-        currentPage: 1
+        options: DV.DEFAULT_USER_FILTER,
+        params: {
+          page: this.currentPage,
+          week: null,
+          name: null,
+          year: null
+        }
       }
+    },
+    watch: {
+      params: 'doLoadData'
     },
     methods: {
       doWrite: function () {
@@ -104,8 +132,12 @@
       },
       dataResponse: function ([code, data]) {
         if (code === 200) {
+          console.log(data.results)
           this.tableData = data.results
           this.total = data.count
+          if (this.tableData.length === 0) {
+            this.showMsg(['info', '遗憾,没有找到数据'])
+          }
         } else {
           this.showMsg(['error', `请求失败！ status : ${code}`])
         }
@@ -123,11 +155,17 @@
         this.$router.push({name: 'doc_edit', params: {id: row.id}})
       },
       handleCurrentChange: function (val) {
-        this.currentPage = val
+        this.params.page = val
         this.doLoadData()
       },
       doLoadData: function () {
-        this.$http.doc.filterMakeDoc({page: this.currentPage}, this.dataResponse)
+        this.$http.doc.filterMakeDoc(this.params, this.dataResponse)
+      },
+      weekChange: function (val) {
+        this.doLoadData()
+      },
+      userChange: function (val) {
+        this.doLoadData()
       }
     },
     created: function () {
@@ -143,6 +181,12 @@
     min-height: 50px;
     text-align: center;
     line-height: 50px;
+  }
+
+  .grid-content .right_select {
+    width: 150px;
+    float: right;
+    margin-right: 10px;
   }
 
   .grid-content .grid_bread {

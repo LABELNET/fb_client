@@ -53,14 +53,29 @@ const DEFAULT_USER = [{
   value: 'labelnet',
   label: 'LABELNET1'
 }, {
-  value: 'labelnet',
+  value: 'labelnet2',
   label: 'LABELNET2'
 }, {
+  value: 'labelnet3',
+  label: 'LABELNET3'
+}]
+
+const DEFAULT_USER_FILTER = [{
+  value: null,
+  label: 'All User'
+}, {
   value: 'labelnet',
+  label: 'LABELNET1'
+}, {
+  value: 'labelnet2',
+  label: 'LABELNET2'
+}, {
+  value: 'labelnet3',
   label: 'LABELNET3'
 }]
 
 export default {
   MAKEDOC_VALUE,
-  DEFAULT_USER
+  DEFAULT_USER,
+  DEFAULT_USER_FILTER
 }
