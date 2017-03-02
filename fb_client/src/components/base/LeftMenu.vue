@@ -17,35 +17,35 @@
             </el-menu-item>
           </router-link>
 
-          <el-submenu index="6">
+          <!--<el-submenu index="6">-->
 
-            <template slot="title"><i class="el-icon-date"></i>总结存档</template>
+            <!--<template slot="title"><i class="el-icon-date"></i>总结存档</template>-->
 
-            <el-submenu index="6-1">
-              <template slot="title">2017</template>
-              <el-menu-item index="6-1-1" class="date_item">1月28日</el-menu-item>
-              <el-menu-item index="6-1-2" class="date_item">2月14日</el-menu-item>
-            </el-submenu>
+            <!--<el-submenu index="6-1">-->
+              <!--<template slot="title">2017</template>-->
+              <!--<el-menu-item index="6-1-1" class="date_item">1月28日</el-menu-item>-->
+              <!--<el-menu-item index="6-1-2" class="date_item">2月14日</el-menu-item>-->
+            <!--</el-submenu>-->
 
-            <el-submenu index="6-2">
-              <template slot="title">2016</template>
-              <el-menu-item index="6-2-1" class="date_item">1月28日</el-menu-item>
-              <el-menu-item index="6-2-2" class="date_item">2月14日</el-menu-item>
-            </el-submenu>
+            <!--<el-submenu index="6-2">-->
+              <!--<template slot="title">2016</template>-->
+              <!--<el-menu-item index="6-2-1" class="date_item">1月28日</el-menu-item>-->
+              <!--<el-menu-item index="6-2-2" class="date_item">2月14日</el-menu-item>-->
+            <!--</el-submenu>-->
 
-          </el-submenu>
+          <!--</el-submenu>-->
 
-          <el-submenu index="7">
-            <template slot="title"><i class="el-icon-menu"></i>其他应用</template>
+          <!--<el-submenu index="7">-->
+            <!--<template slot="title"><i class="el-icon-menu"></i>其他应用</template>-->
 
-            <el-menu-item-group title="待定">
-              <el-menu-item index="7-1">待定1</el-menu-item>
-              <el-menu-item index="7-2">待定2</el-menu-item>
-            </el-menu-item-group>
+            <!--<el-menu-item-group title="待定">-->
+              <!--<el-menu-item index="7-1">待定1</el-menu-item>-->
+              <!--<el-menu-item index="7-2">待定2</el-menu-item>-->
+            <!--</el-menu-item-group>-->
 
-          </el-submenu>
+          <!--</el-submenu>-->
 
-          <el-menu-item index="8"><i class="el-icon-setting"></i>设置</el-menu-item>
+          <!--<el-menu-item index="8"><i class="el-icon-setting"></i>设置</el-menu-item>-->
 
         </el-menu>
       </el-col>
