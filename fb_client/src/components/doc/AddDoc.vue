@@ -58,13 +58,32 @@
     data: function () {
       return {
         docObj: {
+          'content': ''
+        },
+        options: DV.DEFAULT_USER,
+        type: 0
+      }
+    },
+    created: function () {
+      let id = this.$route.params.id
+      if (id === undefined) {
+        // add
+        this.type = 0
+        this.docObj = {
           'content': DV.MAKEDOC_VALUE,
           'status': 0,
           'week_num': 1,
           'user_name': 'who are you'
-        },
-        options: DV.DEFAULT_USER
+        }
+      } else {
+        // edit
+        this.type = 1
+        this.$http.doc.getMakeDocObj({id: id}, this.getObjResponse)
       }
+    },
+    watch: {
+      // 监听route 数据变化，route数据是只读的！
+      '$route': 'changData'
     },
     computed: {
       compiledMarkdown: function () {
@@ -76,14 +95,34 @@
         this.docObj.content = e.target.value
       }, 300),
       docSave: function () {
-        this.$http.doc.createMakeDoc(this.docObj, this.response)
+        if (this.docObj.user_name === 'who are you') {
+          this.showMsg(['warning', 'who are you'])
+          return
+        }
+        if (this.type === 0) {
+          this.$http.doc.createMakeDoc(this.docObj, this.response)
+        } else {
+          this.$http.doc.updMakeDocObj({data: this.docObj}, this.response)
+        }
       },
       response: function ([code, data]) {
+        console.log(code)
         if (code === 201) {
-          // 创建成功
-          this.showMsg(['success', 'FourBox 提交成功 !'])
+          this.showMsg(['success', '已保存成功 !'])
+          this.back()
+        } else if (code === 200) {
+          this.showMsg(['success', '已修改成功 !'])
+          this.back()
         } else {
-          this.showMsg(['error', `出错了! status : ${code}`])
+          this.showMsg(['error', `network error ! status : ${code}`])
+        }
+      },
+      getObjResponse: function ([code, data]) {
+        if (code === 200) {
+          this.showMsg(['info', `你正在修改${data.user_name}的总结`])
+          this.docObj = data
+        } else {
+          this.showMsg(['error', `network error ! status : ${code}`])
         }
       },
       showMsg: function ([type, msg]) {
@@ -91,6 +130,23 @@
           message: msg,
           type: type
         })
+      },
+      changData: function () {
+        console.log('init page')
+        if (this.type === 1) {
+          this.docSave()
+          this.showMsg(['info', `新建总结`])
+          this.type = 0
+          this.docObj = {
+            'content': DV.MAKEDOC_VALUE,
+            'status': 0,
+            'week_num': 1,
+            'user_name': 'who are you'
+          }
+        }
+      },
+      back: function () {
+        this.$router.go(-1)
       }
     }
   }

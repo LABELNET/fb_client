@@ -36,6 +36,10 @@ export default new Router({
       path: '/doc/:id',
       name: 'doc_detail',
       component: DocDetail
+    }, {
+      path: '/doc/editdoc/:id',
+      name: 'doc_edit',
+      component: AddDoc
     }
   ]
 })

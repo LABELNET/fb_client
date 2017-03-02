@@ -10,8 +10,8 @@ function createMakeDoc (data) {
 }
 
 // 获取 doc list
-function getMakeDocList () {
-  return http.get('/mdocs/')
+function getMakeDocList (page, pagesize) {
+  return http.get(`/mdocs?page=${page}&pagesize=${pagesize}`)
 }
 
 // 获取 doc obj

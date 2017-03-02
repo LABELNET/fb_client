@@ -34,7 +34,9 @@
     name: 'DocDetail',
     data: function () {
       return {
-        markDoc: {}
+        markDoc: {
+          'content': ''
+        }
       }
     },
     created: function () {
@@ -74,7 +76,8 @@
     color: black;
     font-size: 16px;
   }
-  .doc_content{
+
+  .doc_content {
     width: 90%;
     margin: 0 auto;
   }

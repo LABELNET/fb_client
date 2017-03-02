@@ -10,8 +10,8 @@ function createMakeDoc (data, callback) {
   FbResponse(doc.createMakeDoc(data), callback)
 }
 
-function getMakeDocsList (callback) {
-  FbResponse(doc.getMakeDocList(), callback)
+function getMakeDocsList ({page = 1, pagesize = 10}, callback) {
+  FbResponse(doc.getMakeDocList(page, pagesize), callback)
 }
 
 function getMakeDocObj ({id = 0}, callback) {
@@ -19,6 +19,9 @@ function getMakeDocObj ({id = 0}, callback) {
 }
 
 function updMakeDocObj ({data = null}, callback) {
+  if (data === null) {
+    return
+  }
   FbResponse(doc.updateMakeDoc(data.id, data), callback)
 }
 

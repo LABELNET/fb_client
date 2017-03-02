@@ -33,7 +33,7 @@
             style="width: 100%">
             <el-table-column
               type="index"
-              width="50">
+              width="100">
             </el-table-column>
             <el-table-column
               property="week_num"
@@ -44,7 +44,7 @@
             <el-table-column
               property="user_name"
               label="姓名"
-              width="120">
+              width="200">
             </el-table-column>
             <el-table-column
               property="date"
@@ -57,7 +57,7 @@
               width="100">
               <template scope="scope">
                 <el-button @click="handleClickLook(scope.row)" type="text" size="small">查看</el-button>
-                <el-button type="text" size="small">编辑</el-button>
+                <el-button type="text" size="small" @click="handleClickEdit(scope.row)">编辑</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -65,6 +65,19 @@
       </el-col>
     </el-row>
 
+    <el-row>
+      <el-col :span="24">
+        <div class="block_page">
+          <el-pagination
+            @current-change="handleCurrentChange"
+            :current-page="currentPage"
+            :page-size="10"
+            layout="prev, pager, next"
+            :total="total">
+          </el-pagination>
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -73,7 +86,9 @@
     name: 'DocManager',
     data: function () {
       return {
-        tableData: []
+        tableData: [],
+        total: 0,
+        currentPage: 1
       }
     },
     methods: {
@@ -90,6 +105,7 @@
       dataResponse: function ([code, data]) {
         if (code === 200) {
           this.tableData = data.results
+          this.total = data.count
         } else {
           this.showMsg(['error', `请求失败！ status : ${code}`])
         }
@@ -102,10 +118,20 @@
       },
       handleClickLook: function (row) {
         this.$router.push({name: 'doc_detail', params: {id: row.id}})
+      },
+      handleClickEdit: function (row) {
+        this.$router.push({name: 'doc_edit', params: {id: row.id}})
+      },
+      handleCurrentChange: function (val) {
+        this.currentPage = val
+        this.doLoadData()
+      },
+      doLoadData: function () {
+        this.$http.doc.getMakeDocsList({page: this.currentPage, pagesize: 12}, this.dataResponse)
       }
     },
     created: function () {
-      this.$http.doc.getMakeDocsList(this.dataResponse)
+      this.doLoadData()
     }
   }
 </script>
@@ -123,5 +149,10 @@
     height: 100%;
     text-align: center;
     line-height: 50px;
+  }
+
+  .block_page {
+    float: right;
+    margin-top: 10px;
   }
 </style>
