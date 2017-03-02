@@ -9,6 +9,9 @@ class FbDocList(generics.ListCreateAPIView):
     queryset = MakeDoc.objects.all()
     serializer_class = FbDocSerializer
 
+    def get_queryset(self):
+        return MakeDoc.objects.all().order_by('-id')
+
 
 # doc object
 class FbDocDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -37,4 +40,4 @@ class FbDocWeekList(generics.ListAPIView):
         if date_year is not None:
             kwargs['date__year'] = date_year
 
-        return MakeDoc.objects.filter(**kwargs)
+        return MakeDoc.objects.filter(**kwargs).order_by('-id')
